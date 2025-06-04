@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Inventory App</string>
+    <string name="login_title">Inicio de sesión</string>
+    <string name="google_login_title">Iniciar sesión con Google</string>
+    <string name="default_web_client_id">955857158231-is8hg96986fm83gea8083vgomuj13sur.apps.googleusercontent.com</string>
+       <!-- Login Form Hints -->
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="text_login">Iniciar sesión</string>
+    <string name="text_login_with_google">Iniciar sesión con Google</string>
+
+       <!-- Registration Form Hints -->
+    <string name="hint_new_username">Nuevo usuario</string>
+    <string name="hint_email">Correo</string>
+       <!-- You already have hint_password, you can reuse it or create a specific one if needed -->
+    <string name="text_register">Registrar</string>
+
+       <!-- Toggle Text -->
+    <string name="text_toggle_to_register">¿No tienes cuenta? Regístrate aquí</string>
+    <string name="text_toggle_to_login">¿Ya tienes cuenta? Inicia sesión aquí</string>
 </resources>
