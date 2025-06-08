@@ -17,9 +17,11 @@ import com.example.inventoryapp.adapter.ProductAdapter
 import com.example.inventoryapp.data.api.ApiClient
 import com.example.inventoryapp.model.Product
 import com.example.inventoryapp.ui.login.LoginActivity
+import com.example.inventoryapp.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.or
 
 class MainActivity : AppCompatActivity() {
     private lateinit var products: MutableList<Product>
@@ -58,7 +60,10 @@ class MainActivity : AppCompatActivity() {
                 handleAddProduct()
                 true
             }
-
+            R.id.action_logout -> {
+                logout()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -288,6 +293,16 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("Cerrar", null)
             .create()
             .show()
+    }
+
+    private fun logout() {
+        SessionManager.clearUserSession(this)
+
+        // Redirige al LoginActivity
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {

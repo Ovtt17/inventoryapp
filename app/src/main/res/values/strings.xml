@@ -31,4 +31,5 @@
     <string name="product_description">Descripcion</string>
     <string name="product_stock">Stock</string>
     <string name="product_category">Categoria</string>
+    <string name="itemLogout">Cerrar Sesion</string>
 </resources>
