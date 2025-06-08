@@ -4,7 +4,6 @@
     <string name="google_login_title">Iniciar sesión con Google</string>
     <string name="default_web_client_id">955857158231-is8hg96986fm83gea8083vgomuj13sur.apps.googleusercontent.com</string>
        <!-- Login Form Hints -->
-    <string name="hint_username">Usuario</string>
     <string name="hint_password">Contraseña</string>
     <string name="text_login">Iniciar sesión</string>
     <string name="text_login_with_google">Iniciar sesión con Google</string>
