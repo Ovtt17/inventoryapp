@@ -20,11 +20,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/usernameField"
+                android:id="@+id/emailField"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:autofillHints=""
-                android:hint="@string/hint_username"
+                android:hint="@string/hint_email"
                 android:background="@drawable/edit_text_background"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
