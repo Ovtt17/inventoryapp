@@ -13,16 +13,17 @@ import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetCredentialResponse
 import com.example.inventoryapp.R
+import com.example.inventoryapp.data.api.ApiClient
 import com.example.inventoryapp.ui.main.MainActivity
+import com.example.inventoryapp.ui.register.RegisterActivity
+import com.example.inventoryapp.utils.SessionManager.saveUserSession
 import com.example.inventoryapp.utils.generateSecureNonce
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import androidx.core.content.edit
-import com.example.inventoryapp.ui.register.RegisterActivity
-import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -99,10 +100,32 @@ class LoginActivity : AppCompatActivity() {
 
     private fun processGoogleIdTokenCredential(credential: GoogleIdTokenCredential) {
         val idToken = credential.idToken
-        val displayName = credential.displayName
 
-        saveUserSession(idToken, displayName)
-        showWelcomeAndRedirect(displayName)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val authService = ApiClient.getAuthService()
+                val response = authService.registerUserWithGoogleToken(idToken)
+                if (response.isSuccessful) {
+                    val user = response.body()
+                    if (user != null) {
+                        runOnUiThread {
+                            saveUserSession(this@LoginActivity, user)
+                            showWelcomeAndRedirect(user.name)
+                        }
+                    }
+                } else {
+                    Log.e("LoginError", "Error en el backend: ${response.code()} - ${response.message()}")
+                    runOnUiThread {
+                        showToast("Error al registrar usuario. Intenta nuevamente.")
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("LoginError", "Error al realizar la petición: ${e.message}", e)
+                runOnUiThread {
+                    showToast("Error de red. Intenta nuevamente.")
+                }
+            }
+        }
     }
 
     private fun processCustomCredential(credential: androidx.credentials.CustomCredential) {
@@ -117,13 +140,6 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Log.w("LoginWarning", "CustomCredential no reconocida: ${credential.type}")
             showToast("Credencial personalizada no soportada.")
-        }
-    }
-
-    private fun saveUserSession(idToken: String?, displayName: String?) {
-        getSharedPreferences("app_prefs", MODE_PRIVATE).edit {
-            putString("token", idToken)
-            putString("display_name", displayName)
         }
     }
 
