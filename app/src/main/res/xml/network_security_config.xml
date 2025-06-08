@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">10.0.2.2</domain> <!-- For Android Emulator -->
+        <domain includeSubdomains="true">192.168.1.9</domain> <!-- For Android Emulator -->
         <domain includeSubdomains="true">localhost</domain>   <!-- For local development if directly targeting localhost -->
     </domain-config>
 </network-security-config>
