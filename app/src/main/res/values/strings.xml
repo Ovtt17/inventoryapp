@@ -18,9 +18,18 @@
        <!-- Toggle Text -->
     <string name="text_toggle_to_register">¿No tienes cuenta? Regístrate aquí</string>
     <string name="text_toggle_to_login">¿Ya tienes cuenta? Inicia sesión aquí</string>
-    <string name="user_name">Nombre de usuario</string>
+    <string name="user_name">Nombre</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
+    <string name="confirmPassword">Confirmar Contraseña</string>
     <string name="register">Registrar</string>
     <string name="welcome_message">Bienvenido, %1$s</string>
+    <string name="itemAdd">Agregar Producto</string>
+    <string name="edit_product">Editar Producto</string>
+    <string name="delete_product">Eliminar Producto</string>
+    <string name="product_name">Nombre de Producto</string>
+    <string name="product_price">Precio</string>
+    <string name="product_description">Descripcion</string>
+    <string name="product_stock">Stock</string>
+    <string name="product_category">Categoria</string>
 </resources>
