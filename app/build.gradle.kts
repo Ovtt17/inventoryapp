@@ -7,6 +7,10 @@ android {
     namespace = "com.example.inventoryapp"
     compileSdk = 35
 
+    viewBinding {
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "com.example.inventoryapp"
         minSdk = 24
