@@ -18,4 +18,8 @@
        <!-- Toggle Text -->
     <string name="text_toggle_to_register">¿No tienes cuenta? Regístrate aquí</string>
     <string name="text_toggle_to_login">¿Ya tienes cuenta? Inicia sesión aquí</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="register">Registrar</string>
 </resources>
