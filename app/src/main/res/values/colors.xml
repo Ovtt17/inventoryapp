@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="card_pressed_color">#E0E0E0</color> <!-- Color al presionar -->
+    <color name="card_default_color">#FFFFFF</color> <!-- Color por defecto -->
 </resources>

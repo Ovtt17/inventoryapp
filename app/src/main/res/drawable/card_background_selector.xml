@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color when the item is pressed -->
+    <item android:drawable="@color/card_pressed_color" android:state_pressed="true" />
+    <!-- Default background color -->
+    <item android:drawable="@color/card_default_color" />
+</selector>

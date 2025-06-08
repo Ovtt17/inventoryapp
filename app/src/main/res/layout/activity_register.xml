@@ -45,6 +45,19 @@
         android:textColor="#000"
         android:textColorHint="#757575" />
 
+    <EditText
+        android:id="@+id/registerConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:autofillHints=""
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/confirmPassword"
+        android:inputType="textPassword"
+        android:paddingHorizontal="16dp"
+        android:textColor="#000"
+        android:textColorHint="#757575" />
+
 
     <Button
         android:id="@+id/registerSubmitButton"
