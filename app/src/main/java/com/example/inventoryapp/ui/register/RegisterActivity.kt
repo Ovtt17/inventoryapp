@@ -3,25 +3,33 @@ package com.example.inventoryapp.ui.register
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.credentials.CredentialManager
 import com.example.inventoryapp.R
 import com.example.inventoryapp.data.api.ApiClient
 import com.example.inventoryapp.dto.RegisterRequest
+import com.example.inventoryapp.utils.GoogleLoginHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
+    private lateinit var credentialManager: CredentialManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        credentialManager = CredentialManager.create(this)
 
         val usernameEditText = findViewById<EditText>(R.id.registerUsername)
         val emailEditText = findViewById<EditText>(R.id.registerEmail)
         val passwordEditText = findViewById<EditText>(R.id.registerPassword)
         val confirmPasswordEditText = findViewById<EditText>(R.id.registerConfirmPassword)
         val registerButton = findViewById<Button>(R.id.registerSubmitButton)
+        val googleLoginButton = findViewById<LinearLayout>(R.id.registerWithGoogleButton)
 
         registerButton.setOnClickListener {
             val username = usernameEditText.text.toString().trim()
@@ -38,6 +46,10 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+
+        googleLoginButton.setOnClickListener {
+            GoogleLoginHelper.signInWithGoogle(this, credentialManager)
         }
     }
 
