@@ -21,7 +21,6 @@ import com.example.inventoryapp.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.or
 
 class MainActivity : AppCompatActivity() {
     private lateinit var products: MutableList<Product>
