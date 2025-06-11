@@ -33,4 +33,9 @@ object SessionManager {
             remove(USER_KEY)
         }
     }
+
+    fun getUserEmail(context: Context): String? {
+        val user = getUserSession(context)
+        return user?.email
+    }
 }
