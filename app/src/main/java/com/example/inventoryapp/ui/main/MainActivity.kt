@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                     )
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        val productService = ApiClient.getProductService()
+                        val productService = ApiClient.getProductService(this@MainActivity)
                         val response = productService.addProduct(newProduct)
                         if (response.isSuccessful) {
                             products.add(response.body()!!)
@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun loadProducts(): MutableList<Product> {
-        val productService = ApiClient.getProductService()
+        val productService = ApiClient.getProductService(this@MainActivity)
         val response = productService.getProducts()
         return if (response.isSuccessful) {
             response.body() ?: mutableListOf()
@@ -206,7 +206,7 @@ class MainActivity : AppCompatActivity() {
                     )
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        val productService = ApiClient.getProductService()
+                        val productService = ApiClient.getProductService(this@MainActivity)
                         val response = productService.updateProduct(product.id, updatedProduct)
                         if (response.isSuccessful) {
                             val index = products.indexOf(product)
@@ -245,7 +245,7 @@ class MainActivity : AppCompatActivity() {
             .setMessage("¿Está seguro de que desea eliminar ${product.name}?")
             .setPositiveButton("Eliminar") { _, _ ->
                 CoroutineScope(Dispatchers.IO).launch {
-                    val productService = ApiClient.getProductService()
+                    val productService = ApiClient.getProductService(this@MainActivity)
                     val response = productService.deleteProduct(product.id)
 
                     if (response.isSuccessful) {
@@ -302,9 +302,5 @@ class MainActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 }
