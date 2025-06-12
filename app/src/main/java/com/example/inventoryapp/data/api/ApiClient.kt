@@ -23,9 +23,9 @@ object ApiClient {
     private fun createRetrofit(context: Context): Retrofit {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
-                val email = SessionManager.getUserEmail(context)
+                val userId = SessionManager.getUserId(context)
                 val request = chain.request().newBuilder()
-                    .addHeader("X-User-Email", email ?: "")
+                    .addHeader("X-User-ID", (userId ?: ""))
                     .build()
                 chain.proceed(request)
             }
