@@ -34,8 +34,8 @@ object SessionManager {
         }
     }
 
-    fun getUserEmail(context: Context): String? {
+    fun getUserId(context: Context): String? {
         val user = getUserSession(context)
-        return user?.email
+        return user?.id
     }
 }
